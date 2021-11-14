@@ -19,3 +19,5 @@ Finally, it will bruteforce all possible characters incrementally up to 7 charac
 We can skip stages of the process using [q]. AutoHashcat will just proceed to the next battery of cracking.
 
 Feel free to fork the script and make it better! 
+
+![AutoHashcatDemo](https://user-images.githubusercontent.com/17464377/141667814-7d8495b2-0640-4500-8c64-3685a3452eae.PNG)
