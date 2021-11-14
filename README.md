@@ -14,9 +14,9 @@ First, it executes a wordlist attack with a battery of rules.
 
 Second, a battery of mask attacks without wordlist.
 
-Third, a battery of masks + wordlist.
+Third, a battery of wordlist + mask attacks.
 
-Fourth, a battery of wordlist + masks.
+Fourth, a battery of mask + wordlist attacks.
 
 Finally, it will bruteforce all possible characters incrementally up to 7 characters.
 
