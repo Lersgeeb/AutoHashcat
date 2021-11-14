@@ -3,6 +3,18 @@ A collection of automated hash cracking knowledge
 
 This is a batch script I put together to automate the workflow of cracking password hashes captured during my Pentests.
 
+Before running make sure everything is pointing where it should be !!
+
+HASHCAT_BIN
+
+WORDLIST
+
+MASK_DIRECTORY
+
+RULES_DIRECTORY
+
+etc..
+
 Usage:
 
 .\AutoHashcat.bat .\hashes.txt .\hashkiller-dict.txt
