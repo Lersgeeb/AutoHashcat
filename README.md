@@ -11,9 +11,13 @@ The script will ask for the hash type (-m) and for a job name which will be the 
 After that the script will take care of the attack modes that will be executed against the hashes file so you can go on with your life and do other fun things.
 
 First, it executes a wordlist attack with a battery of rules.
-Second, a battery of mask attacks without wordlist
-Third, a battery of masks + wordlist
-Fourth, a battery of wordlist + masks
+
+Second, a battery of mask attacks without wordlist.
+
+Third, a battery of masks + wordlist.
+
+Fourth, a battery of wordlist + masks.
+
 Finally, it will bruteforce all possible characters incrementally up to 7 characters.
 
 We can skip stages of the process using [q]. AutoHashcat will just proceed to the next battery of cracking.
