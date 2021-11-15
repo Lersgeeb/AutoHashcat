@@ -39,5 +39,3 @@ We can modify the script to add or remove masks and rules as needed.
 I have made an effort to order the rules and masks in order of execution time.
 
 Feel free to fork the script and make it better or add your own masks and rules! 
-
-![AutoHashcatDemo](https://user-images.githubusercontent.com/17464377/141667814-7d8495b2-0640-4500-8c64-3685a3452eae.PNG)
