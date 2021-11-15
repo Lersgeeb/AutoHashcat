@@ -17,7 +17,7 @@ etc..
 
 Usage:
 
-.\AutoHashcat.bat .\hashes.txt .\hashkiller-dict.txt
+.\AutoHashcat.bat .\hashes.txt
 
 The script will ask for the hash type (-m) and for a job name which will be the potfile where the cracked hashes are stored.
 After that the script will take care of the attack modes that will be executed against the hashes file so you can go on with your life and do other fun things.
