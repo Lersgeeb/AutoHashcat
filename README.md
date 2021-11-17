@@ -34,7 +34,7 @@ Finally, it will bruteforce all possible characters incrementally up to 7 charac
 
 We can skip stages of the process using [q]. AutoHashcat will just proceed to the next battery of cracking.
 
-We can modify the script to add or remove wordlists, masks and rules as needed in the WORDLISTS, MASKS, AND RULES variables 
+We can modify the script to add or remove wordlists, masks and rules as needed in the WORDLIST, MASKS, AND RULES variables 
 
 I have made an effort to order the rules and masks in order of execution time.
 
