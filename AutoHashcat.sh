@@ -20,7 +20,6 @@ RULES_LIST="combinator.rule best64.rule"
 MASKS_DIRECTORY="./masks/"
 MASK_LIST="corp_8.hcmask corp_9.hcmask"
 
-
 	for a in $WORDLIST; do
     		for b in $RULES_LIST; do
         		$HASHCAT_BIN -a 0 -m $HASH_TYPE -w4 -r $RULES_DIRECTORY$b $HASHES_FILE $WORDLIST_DIRECTORY$a -O --potfile-path $POTFILE.pot
