@@ -12,7 +12,7 @@ HASHCAT_BIN=$(which hashcat)
 HASHES_FILE=$1
 echo "Enter a name for this job: "
 read JOBNAME
-POTFILE="AutoHashcat_POTFILE_"$JOBNAME
+POTFILE="./potfiles/AutoHashcat_POTFILE_"$JOBNAME
 WORDLIST_DIRECTORY="./wordlists/"
 WORDLIST="rockyou.txt oracle-ebs-passwordlist.txt"
 RULES_DIRECTORY="./rules/"
