@@ -2,22 +2,21 @@
 
 if [ -z "$1" ]; then
 	echo "Usage: $0 <hashes_file.txt>"
-exit 0
-
+	exit 0
 else
 
-echo "Enter hash type (-m): "
-read HASH_TYPE 
-HASHCAT_BIN=$(which hashcat)
-HASHES_FILE=$1
-echo "Enter a name for this job: "
-read JOBNAME
-POTFILE="./potfiles/AutoHashcat_POTFILE_"$JOBNAME
-WORDLIST_DIRECTORY="./wordlists"
-RULES_DIRECTORY="./rules/"
-RULES_LIST="combinator.rule best64.rule"
-MASKS_DIRECTORY="./masks/"
-MASK_LIST="corp_8.hcmask corp_9.hcmask"
+	echo "Enter hash type (-m): "
+	read HASH_TYPE 
+	HASHCAT_BIN=$(which hashcat)
+	HASHES_FILE=$1
+	echo "Enter a name for this job: "
+	read JOBNAME
+	POTFILE="./potfiles/AutoHashcat_POTFILE_"$JOBNAME
+	WORDLIST_DIRECTORY="./wordlists"
+	RULES_DIRECTORY="./rules/"
+	RULES_LIST="combinator.rule best64.rule"
+	MASKS_DIRECTORY="./masks/"
+	MASK_LIST="corp_8.hcmask corp_9.hcmask"
 
 	for wordlist in $WORDLIST_DIRECTORY/* 
 	do
