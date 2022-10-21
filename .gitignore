@@ -1,3 +1,5 @@
 potfiles/*
 sessions/*
 hashes/*
+wordlists/*
+hashcat64.exe
