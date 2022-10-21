@@ -13,16 +13,17 @@ HASHES_FILE=$1
 echo "Enter a name for this job: "
 read JOBNAME
 POTFILE="./potfiles/AutoHashcat_POTFILE_"$JOBNAME
-WORDLIST_DIRECTORY="./wordlists/"
-WORDLIST="rockyou.txt oracle-ebs-passwordlist.txt"
+WORDLIST_DIRECTORY="./wordlists"
 RULES_DIRECTORY="./rules/"
 RULES_LIST="combinator.rule best64.rule"
 MASKS_DIRECTORY="./masks/"
 MASK_LIST="corp_8.hcmask corp_9.hcmask"
 
-	for a in $WORDLIST; do
+	for wordlist in $WORDLIST_DIRECTORY/* 
+	do
+			[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
     		for b in $RULES_LIST; do
-        		$HASHCAT_BIN -a 0 -m $HASH_TYPE -w4 -r $RULES_DIRECTORY$b $HASHES_FILE $WORDLIST_DIRECTORY$a -O --potfile-path $POTFILE.pot
+        		$HASHCAT_BIN -a 0 -m $HASH_TYPE -w4 -r $RULES_DIRECTORY$b $HASHES_FILE $wordlist -O --potfile-path $POTFILE.pot
     		done
 	done
 
@@ -30,15 +31,21 @@ MASK_LIST="corp_8.hcmask corp_9.hcmask"
     		 $HASHCAT_BIN -a 3 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$a -O --potfile-path $POTFILE.pot
 	done
 
-	for a in $WORDLIST; do
+	for wordlist in $WORDLIST_DIRECTORY/* 
+	do
+			[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
+
     		for b in $MASK_LIST; do
-        		$HASHCAT_BIN -a 6 -m $HASH_TYPE -w4 $HASHES_FILE $WORDLIST_DIRECTORY$a $MASKS_DIRECTORY$b -O --potfile-path $POTFILE.pot
+        		$HASHCAT_BIN -a 6 -m $HASH_TYPE -w4 $HASHES_FILE $wordlist $MASKS_DIRECTORY$b -O --potfile-path $POTFILE.pot
     		done
 	done
 
-	for a in $WORDLIST; do
+	for wordlist in $WORDLIST_DIRECTORY/* 
+	do
+			[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
+
     		for b in $MASK_LIST; do
-        		$HASHCAT_BIN -a 7 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$b $WORDLIST_DIRECTORY$a -O --potfile-path $POTFILE.pot
+        		$HASHCAT_BIN -a 7 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$b $wordlist -O --potfile-path $POTFILE.pot
     		done
 	done
 
