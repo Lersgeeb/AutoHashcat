@@ -28,13 +28,12 @@ MASK_LIST="corp_8.hcmask corp_9.hcmask"
 	done
 
 	for a in $MASK_LIST; do
-    	$HASHCAT_BIN -a 3 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$a -O --potfile-path $POTFILE.pot
+		$HASHCAT_BIN -a 3 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$a -O --potfile-path $POTFILE.pot
 	done
 
 	for wordlist in $WORDLIST_DIRECTORY/* 
 	do
 		[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
-
 		for b in $MASK_LIST; do
 			$HASHCAT_BIN -a 6 -m $HASH_TYPE -w4 $HASHES_FILE $wordlist $MASKS_DIRECTORY$b -O --potfile-path $POTFILE.pot
 		done
@@ -43,7 +42,6 @@ MASK_LIST="corp_8.hcmask corp_9.hcmask"
 	for wordlist in $WORDLIST_DIRECTORY/* 
 	do
 		[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
-
 		for b in $MASK_LIST; do
 			$HASHCAT_BIN -a 7 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$b $wordlist -O --potfile-path $POTFILE.pot
 		done
