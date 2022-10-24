@@ -8,7 +8,7 @@ def find_hashcat():
     HASHCAT_EXE_OPTIONS = ['hashcat64.exe', 'hashcat.exe', 'hashcat32.exe']
 
     if platform == "linux" or platform == "linux2":
-        result = os.popen(f'which {option}')
+        result = os.popen(f'which hashcat')
         return result
     elif platform == "win32":
         for option in HASHCAT_EXE_OPTIONS:
