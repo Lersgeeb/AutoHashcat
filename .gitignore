@@ -2,4 +2,8 @@ potfiles/*
 sessions/*
 hashes/*
 wordlists/*
-hashcat64.exe
+.venv
+kernels
+modules
+OpenCL
+hashcat*
