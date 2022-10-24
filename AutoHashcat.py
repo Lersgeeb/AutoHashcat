@@ -50,7 +50,7 @@ def AutoHashcat(file):
     for wordlist in os.listdir(WORDLIST_DIRECTORY):
         if wordlist != "README.md" : 
             for rule in RULES_LIST:    
-                run_command(f"{HASHCAT_RUN} -a 0 -m {HASH_TYPE} -w4 -r {RULES_DIRECTORY}{rule} {HASH_FILE} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot", shell=True)
+                run_command(f"{HASHCAT_RUN} -a 0 -m {HASH_TYPE} -w4 -r {RULES_DIRECTORY}{rule} {HASH_FILE} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
     
     for mask in MASK_LIST: 
         run_command(f"{HASHCAT_RUN} -a 3 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} -O --potfile-path {POTFILE}.pot")
