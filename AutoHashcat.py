@@ -8,7 +8,8 @@ def find_hashcat():
     HASHCAT_EXE_OPTIONS = ['hashcat64.exe', 'hashcat.exe', 'hashcat32.exe']
 
     if platform == "linux" or platform == "linux2":
-        result = os.popen(f'which hashcat')
+        result = os.popen(f'which hashcat').read()
+        result = result.split("\n")[0].strip()
         return result
     elif platform == "win32":
         for option in HASHCAT_EXE_OPTIONS:
@@ -21,6 +22,12 @@ def read_list_file(filename):
         lines = file.readlines()
         lineList = [line.rstrip() for line in lines]
     return lineList
+
+def run_command(command):
+    if platform == "linux" or platform == "linux2":
+        subprocess.call(command, shel=True)
+    elif platform == "win32":
+        subprocess.run(command)
 
 @click.command(no_args_is_help=True)
 @click.option('--file', default='.\hashes\hashes.txt', help='A filename path with the hashes encrypted')
@@ -43,22 +50,22 @@ def AutoHashcat(file):
     for wordlist in os.listdir(WORDLIST_DIRECTORY):
         if wordlist != "README.md" : 
             for rule in RULES_LIST:    
-                subprocess.run(f"{HASHCAT_RUN} -a 0 -m {HASH_TYPE} -w4 -r {RULES_DIRECTORY}{rule} {HASH_FILE} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
+                run_command(f"{HASHCAT_RUN} -a 0 -m {HASH_TYPE} -w4 -r {RULES_DIRECTORY}{rule} {HASH_FILE} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot", shell=True)
     
     for mask in MASK_LIST: 
-        subprocess.run(f"{HASHCAT_RUN} -a 3 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} -O --potfile-path {POTFILE}.pot")
+        run_command(f"{HASHCAT_RUN} -a 3 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} -O --potfile-path {POTFILE}.pot")
 
     for wordlist in os.listdir(WORDLIST_DIRECTORY):
         if wordlist != "README.md" : 
             for mask in MASK_LIST:   
-                subprocess.run(f"{HASHCAT_RUN} -a 6 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
+                run_command(f"{HASHCAT_RUN} -a 6 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
 
     for wordlist in os.listdir(WORDLIST_DIRECTORY):
         if wordlist != "README.md" : 
             for mask in MASK_LIST:   
-                subprocess.run(f"{HASHCAT_RUN} -a 7 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
+                run_command(f"{HASHCAT_RUN} -a 7 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
 
-    subprocess.run(f"{HASHCAT_RUN} -i -a 3 -m {HASH_TYPE} -w4 {HASH_FILE} ?a?a?a?a?a?a?a -O --potfile-path {POTFILE}.pot")
+    run_command(f"{HASHCAT_RUN} -i -a 3 -m {HASH_TYPE} -w4 {HASH_FILE} ?a?a?a?a?a?a?a -O --potfile-path {POTFILE}.pot")
 
 if __name__ == "__main__":
     AutoHashcat()
