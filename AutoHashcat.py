@@ -25,7 +25,7 @@ def read_list_file(filename):
 
 def run_command(command):
     if platform == "linux" or platform == "linux2":
-        subprocess.call(command, shel=True)
+        subprocess.call(command, shell=True)
     elif platform == "win32":
         subprocess.run(command)
 
