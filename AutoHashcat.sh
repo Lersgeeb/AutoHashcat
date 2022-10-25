@@ -14,35 +14,36 @@ else
 	POTFILE="./potfiles/AutoHashcat_POTFILE_"$JOBNAME
 	WORDLIST_DIRECTORY="./wordlists"
 	RULES_DIRECTORY="./rules/"
-	RULES_LIST="combinator.rule best64.rule"
 	MASKS_DIRECTORY="./masks/"
-	MASK_LIST="corp_8.hcmask corp_9.hcmask"
+	RULES2USE_FILE="./inputs/rules2use.txt"
+	MASKS2USE_FILE="./inputs/masks2use.txt"
 
 	for wordlist in $WORDLIST_DIRECTORY/* 
 	do
 		[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
-		for b in $RULES_LIST; do
-			$HASHCAT_BIN -a 0 -m $HASH_TYPE -w4 -r $RULES_DIRECTORY$b $HASHES_FILE $wordlist -O --potfile-path $POTFILE.pot
+		for RULE in $(cat $RULES2USE_FILE)
+		do
+			$HASHCAT_BIN -a 0 -m $HASH_TYPE -w4 -r $RULES_DIRECTORY$RULE $HASHES_FILE $wordlist -O --potfile-path $POTFILE.pot
 		done
 	done
 
-	for a in $MASK_LIST; do
-		$HASHCAT_BIN -a 3 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$a -O --potfile-path $POTFILE.pot
+	for MASK in $(cat $MASKS2USE_FILE); do
+		$HASHCAT_BIN -a 3 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$MASK -O --potfile-path $POTFILE.pot
 	done
 
 	for wordlist in $WORDLIST_DIRECTORY/* 
 	do
 		[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
-		for b in $MASK_LIST; do
-			$HASHCAT_BIN -a 6 -m $HASH_TYPE -w4 $HASHES_FILE $wordlist $MASKS_DIRECTORY$b -O --potfile-path $POTFILE.pot
+		for MASK in $(cat $MASKS2USE_FILE); do
+			$HASHCAT_BIN -a 6 -m $HASH_TYPE -w4 $HASHES_FILE $wordlist $MASKS_DIRECTORY$MASK -O --potfile-path $POTFILE.pot
 		done
 	done
 
 	for wordlist in $WORDLIST_DIRECTORY/* 
 	do
 		[[ $wordlist -ef "./wordlists/README.md"  ]] && continue
-		for b in $MASK_LIST; do
-			$HASHCAT_BIN -a 7 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$b $wordlist -O --potfile-path $POTFILE.pot
+		for MASK in $(cat $MASKS2USE_FILE); do
+			$HASHCAT_BIN -a 7 -m $HASH_TYPE -w4 $HASHES_FILE $MASKS_DIRECTORY$MASK $wordlist -O --potfile-path $POTFILE.pot
 		done
 	done
 
