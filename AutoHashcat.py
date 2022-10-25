@@ -30,10 +30,12 @@ def run_command(command):
         subprocess.run(command)
 
 @click.command(no_args_is_help=True)
-@click.option('--file', default='.\hashes\hashes.txt', help='A filename path with the hashes encrypted')
+@click.option('--file', help='A filename path with the hashes encrypted')
 def AutoHashcat(file):
    
     '''
+    Automate the workflow of cracking password hashes captured during a Pentests.
+
     Quick Usage: python .\AutoHashcat.py --file .\hashes\hashes.txt
     '''
     HASH_TYPE = input("Enter hash type (-m): ")
@@ -58,7 +60,7 @@ def AutoHashcat(file):
     for wordlist in os.listdir(WORDLIST_DIRECTORY):
         if wordlist != "README.md" : 
             for mask in MASK_LIST:   
-                run_command(f"{HASHCAT_RUN} -a 6 -m {HASH_TYPE} -w4 {HASH_FILE} {MASKS_DIRECTORY}{mask} {WORDLIST_DIRECTORY}{wordlist} -O --potfile-path {POTFILE}.pot")
+                run_command(f"{HASHCAT_RUN} -a 6 -m {HASH_TYPE} -w4 {HASH_FILE} {WORDLIST_DIRECTORY}{wordlist} {MASKS_DIRECTORY}{mask} -O --potfile-path {POTFILE}.pot")
 
     for wordlist in os.listdir(WORDLIST_DIRECTORY):
         if wordlist != "README.md" : 

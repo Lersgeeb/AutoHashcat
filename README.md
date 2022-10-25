@@ -1,7 +1,7 @@
 # AutoHashcat
 A collection of automated hash cracking knowledge 
 
-This is a batch/bash script that automate the workflow of cracking password hashes captured during a Pentests.
+This is a Batch/Bash/Python script that automate the workflow of cracking password hashes captured during a Pentests.
 
 Before running make sure everything is pointing where it should be !!
 
@@ -13,8 +13,16 @@ Before running make sure everything is pointing where it should be !!
 
 ## Quick Start
 
-**Usage:**
-> `.\AutoHashcat.bat .\hashes.txt`
+**BATCH Usage:**
+> `.\AutoHashcat.bat .\hashes\hashes.txt`
+
+**BASH Usage:**
+> `.\AutoHashcat.sh .\hashes\hashes.txt`
+
+**Python Usage:**
+> `python AutoHashcat.py --file .\hashes\hashes.txt`
+
+## Description
 
 The script will ask for the hash type (`-m`) and for a `job name` which will be the potfile where the cracked hashes are stored.
 
@@ -34,11 +42,13 @@ We can skip stages of the process using `q`. AutoHashcat will just proceed to th
 
 ## Custom the Script
 
-- The script can be modify to add or remove **masks** and **rules** as needed.
+- The script on `bash` and `batch` can be modify to add or remove **masks** and **rules** as needed.
 
-- To add any **wordlist** you just need to add it to the `wordlists` directory
+- To modify **masks** and **rules** on python script go to `./inputs/` directory and change `masks2use.txt` or `rules2use.txt` files.
 
-- The rules and masks are ordered by **execution time.**
+- To add any **wordlist** you just need to add it to the `wordlists` directory.
+
+- The rules and masks are currently ordered by **execution time.**
 
 Feel free to fork the script and make it better or add your own masks and rules! 
 
