@@ -9,3 +9,5 @@ OpenCL
 hashcat*
 AutoHashcat.egg-info
 __pycache__
+.vscode
+build
