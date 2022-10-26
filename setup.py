@@ -1,9 +1,9 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='AutoHashcat',
     version='1.0.0',
-    packages=find_packages(),
+    py_modules=['AutoHashcat'],
     install_requires=[
         'click',
         'colorama'
