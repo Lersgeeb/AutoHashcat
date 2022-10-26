@@ -7,3 +7,5 @@ kernels
 modules
 OpenCL
 hashcat*
+AutoHashcat.egg-info
+__pycache__
