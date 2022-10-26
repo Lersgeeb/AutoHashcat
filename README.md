@@ -43,6 +43,8 @@ First is important to **describe some directories** that the script will use:
 Download the repository and copy all the files to the **Hashcat executable folder**. Then open a terminal in it.
 
 **Batch Usage:**
+
+On batch in case you have `hashcat.exe` instead of `hashcat64.exe` you can just copy the file and rename it. And then you can run the script
 > `.\AutoHashcat.bat .\hashes\hashes.txt`
 
 **Python Usage:**
@@ -53,20 +55,36 @@ Install the requirements with
 Run The Script
 > `AutoHashcat --file .\hashes\hashes.txt`
 
-### Linux Setup
-
-Download the repository to any folder as you want. Then open a terminal in it.
-
-**Bash Usage:**
-> `.\AutoHashcat.sh .\hashes\hashes.txt`
-
-**Python Usage:**
+**Another options with python is...**
 
 Install the requirements with 
 > `pip install -r python_requirements.txt`
 
 Run The Script
 > `python AutoHashcat.py --file .\hashes\hashes.txt`
+
+### Linux Setup
+
+Download the repository to any folder as you want. Then open a terminal in it.
+
+**Bash Usage:**
+> `./AutoHashcat.sh ./hashes/hashes.txt`
+
+**Python Usage:**
+
+Install the requirements with 
+> `pip install .`
+
+Run The Script
+> `AutoHashcat --file ./hashes/hashes.txt`
+
+**Another options with python is...**
+
+Install the requirements with 
+> `pip install -r python_requirements.txt`
+
+Run The Script
+> `python AutoHashcat.py --file ./hashes/hashes.txt`
 
 ## How AutoHashcat Works
 
