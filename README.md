@@ -17,14 +17,25 @@ You can read more information about **rules based attacks** in the following lin
 > https://hashcat.net/wiki/doku.php?id=rule_based_attack
 
 ## How to use AutoHashCat
+First is important to **describe some directories** that the script will use:
+- `./customs_masks/`: Project directory that contains many masks  that can be use by hashcat (there are some extra masks files that doesn't exists on the original Hashcat Project)
+- `./customs_rules/`: Project directory that contains many rules that can be use by hashcat (there are some extra rules files that doesn't exists on the original Hashcat Project)
+- `./hashes/`: Directory that should contain the hashes file to decrypt.
+- `./inputs/`: This directory contains the `masks2use.txt` and `rules2use.txt` files that can be modified to change the masks and rules that the script will use.
+- `./potfiles/`: Here is where the decrypted hashes will appear.
+- `./utils/`: Some extra scripts that are kinda useful in some cases.
+- `./wordlists/`: Usually here is where you put the `rockyou.txt` file.
 
-Before you run make sure everything is as it should be !!
 
-- The executable of hashcat project exist on the current folder (Windows)
-- There is at least one file on the `wordlist` directory. (Usually here is where you put the rockyou.txt file)
-- Verify `./customs_masks/` directory files (There is some extra masks that doesn't exists on the original Hashcat Project)
-- Verify `./customs_rules/` directory files (There is some extra rules that doesn't exists on the original Hashcat Project)
 
+**Before you run** make sure everything is as it should be
+
+- The **executable of hashcat project** exist on the current folder (Just For **Windows**)
+- There is at least one file on the `./wordlist/` directory.
+- Verify that the masks list given on `./inputs/masks2use.txt` exists on the `./customs_masks/` directory files.
+- Verify that the rules list given on `./inputs/rules2use.txt` exists on the `./customs_rules/` directory files.
+- Execute **Python** ( `./AutoHashcat.py` ) or **Bash** ( `./AutoHashcat.sh` ) script in case you are on a Linux based system.
+- Execute **Python** ( `./AutoHashcat.py` ) or **Batch** ( `./AutoHashcat.bat` ) script in case you are on a Windows based system.
 
 
 ### Windows Setup
@@ -57,13 +68,13 @@ Install the requirements with
 Run The Script
 > `python AutoHashcat.py --file .\hashes\hashes.txt`
 
-## Description
+## How AutoHashcat Works
 
 The script will ask for the hash type (`-m`) and for a `job name` which will be the potfile where the cracked hashes are stored.
 
-After that the script will take care of the attack modes that will be executed against the hashes file so you can go on with your life and do other fun things.
+After that, the script will take care of the attack modes that will be executed against the hashes file, so you can go on with your life and do other fun things.
 
-1. First, it executes a **wordlist attack** with a battery of rules.
+1. First, it executes a **wordlist attack** with a battery of **rules**.
 
 2. Second, a battery of **mask attacks** without wordlist.
 
