@@ -13,7 +13,7 @@ def find_hashcat():
         return result
     elif platform == "win32":
         for option in HASHCAT_EXE_OPTIONS:
-            if(os.path.isfile(f"./{option}")): return f"./{option}"
+            if(os.path.isfile(f"../{option}")): return f"../{option}"
             
     return ''
 
