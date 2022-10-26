@@ -6,9 +6,9 @@ set HASHES_FILE=%1
 set /p JOBNAME="Enter a name for this job: "
 set POTFILE=".\potfiles\AutoHashcat_POTFILE_"%JOBNAME%
 set WORDLIST_DIRECTORY=.\wordlists\
-set RULES_DIRECTORY=.\rules\
+set RULES_DIRECTORY=.\custom_rules\
 set RULES2USE_FILE=.\inputs\rules2use.txt
-set MASKS_DIRECTORY=.\masks\
+set MASKS_DIRECTORY=.\custom_masks\
 set MASKS2USE_FILE=.\inputs\masks2use.txt
 
 (for %%a in (%WORDLIST_DIRECTORY%*) do (

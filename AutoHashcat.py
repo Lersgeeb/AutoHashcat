@@ -13,7 +13,7 @@ def find_hashcat():
         return result
     elif platform == "win32":
         for option in HASHCAT_EXE_OPTIONS:
-            if(os.path.isfile(f"../{option}")): return f"../{option}"
+            if(os.path.isfile(f"./{option}")): return f"./{option}"
             
     return ''
 
@@ -47,9 +47,9 @@ def AutoHashcat(file):
     HASH_FILE = file
     POTFILE = f"./potfiles/AutoHashcat_POTFILE_{JOB_NAME}"
     WORDLIST_DIRECTORY = "./wordlists/"
-    RULES_DIRECTORY = "./rules/"
+    RULES_DIRECTORY = "./custom_rules/"
     RULES_LIST = read_list_file("./inputs/rules2use.txt")
-    MASKS_DIRECTORY = "./masks/"
+    MASKS_DIRECTORY = "./custom_masks/"
     MASK_LIST = read_list_file("./inputs/masks2use.txt")
     
     for wordlist in os.listdir(WORDLIST_DIRECTORY):

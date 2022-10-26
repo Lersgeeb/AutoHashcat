@@ -13,8 +13,8 @@ else
 	read JOBNAME
 	POTFILE="./potfiles/AutoHashcat_POTFILE_"$JOBNAME
 	WORDLIST_DIRECTORY="./wordlists"
-	RULES_DIRECTORY="./rules/"
-	MASKS_DIRECTORY="./masks/"
+	RULES_DIRECTORY="./custom_rules/"
+	MASKS_DIRECTORY="./custom_masks/"
 	RULES2USE_FILE="./inputs/rules2use.txt"
 	MASKS2USE_FILE="./inputs/masks2use.txt"
 
